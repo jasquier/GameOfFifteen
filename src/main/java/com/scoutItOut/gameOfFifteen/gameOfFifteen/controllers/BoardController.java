@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "api/v1/")
+@RequestMapping(value = "api/v0.1/")
 public class BoardController {
 
     @Autowired

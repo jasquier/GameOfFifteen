@@ -4,15 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Objects;
 
+/**
+ * @author jasquier
+ * @since 0.1
+ *
+ */
 @Entity
 public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-
-    String name;
+    private Long id;
+    private String name;
 
     public Board() {
 
@@ -39,13 +44,30 @@ public class Board {
         this.name = name;
     }
 
-    /*
-    @Autowired
-    private Cell[][] cells;
-
-    public Board(Cell[][] cells) {
-        this.cells = cells;
+    @Override
+    public boolean equals(Object other) {
+        if ( other instanceof Board ) {
+            return this.equals((Board)other);
+        } else {
+            return false;
+        }
     }
-    */
 
+    private boolean equals(Board other) {
+        boolean flag = false;
+        if ( thisBoardsIdMatches(other) ) {
+            if( thisBoardsNameMatches(other) ) {
+                flag = true;
+            }
+        }
+        return flag;
+    }
+
+    private boolean thisBoardsIdMatches(Board other) {
+        return this.getId().equals(other.getId());
+    }
+
+    private boolean thisBoardsNameMatches(Board other) {
+        return this.getName().equals(other.getName());
+    }
 }

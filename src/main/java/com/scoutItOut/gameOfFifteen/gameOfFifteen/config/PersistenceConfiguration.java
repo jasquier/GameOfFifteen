@@ -8,7 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
-
+/**
+ * @author jasquier
+ * @since 0.1
+ * TODO Determine if I need both data sources.
+ */
 @Configuration
 public class PersistenceConfiguration {
 

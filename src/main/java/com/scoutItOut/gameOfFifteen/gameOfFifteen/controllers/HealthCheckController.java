@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
+@RequestMapping(value = "/api/v0.1/")
 public class HealthCheckController {
 
     @RequestMapping(value = "/healthCheck", method = RequestMethod.GET)
