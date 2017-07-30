@@ -10,6 +10,8 @@ import static org.hamcrest.Matchers.*;
 /**
  * @author jasquier
  * @since 0.1
+ *
+ * TODO change tests once board version of equals() is implemented
  */
 public class BoardTest {
 
@@ -22,8 +24,11 @@ public class BoardTest {
 
     @Test
     public void noArgConstructorShouldPopulateADefaultBoard() {
+        // Call the no argument constructor to generate a default board
         Board actualBoard = new Board();
+        // This array represents the default board
         Integer[] expectedValues = {3, 2, 1, 0, 7, 6, 5, 4, 11, 10, 9, 8, 15, 14 ,13, 12};
+
         Integer[] actualValues = populateActualValuesFromBoard(actualBoard);
         assertThat(actualValues, is(expectedValues));
     }
@@ -58,11 +63,12 @@ public class BoardTest {
 
         // check if Board is correctly populated with BoardDAO values
         Integer[] expected = {0, 1, 2, 3, 10, 11, 12, 13, 20, 21, 22, 23, 30, 31, 32, 33};
-        Integer[] actual = populateActualValuesFromBoard(actualBoard);
 
+        Integer[] actual = populateActualValuesFromBoard(actualBoard);
         assertThat(actual, is(expected));
     }
 
+    // converts a given board to a 1d array
     private Integer[] populateActualValuesFromBoard(Board actualBoard) {
         Integer[] actualValues = new Integer[16];
         for ( int i = 0; i < 16; i++ ) {
