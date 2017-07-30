@@ -1,6 +1,8 @@
 package com.scoutItOut.gameOfFifteen.gameOfFifteen.controllers;
 
+import com.scoutItOut.gameOfFifteen.gameOfFifteen.dao.BoardDAO;
 import com.scoutItOut.gameOfFifteen.gameOfFifteen.model.Board;
+import com.scoutItOut.gameOfFifteen.gameOfFifteen.model.Cell;
 import com.scoutItOut.gameOfFifteen.gameOfFifteen.repository.BoardRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,9 @@ import java.util.List;
 /**
  * @author jasquier
  * @since 0.1
+ *
+ * Our app is not a crud application so the front end wont be able to issue commands through the middle like this
+ * Note that we are using BoardDAO's to interact with the backend and should probably not be using them here.
  */
 @CrossOrigin
 @RestController
@@ -21,35 +26,35 @@ public class BoardController {
     private BoardRepository boardRepository;
 
     @RequestMapping(value = "board", method = RequestMethod.GET)
-    public Board exampleBoard() {
-        return new Board(1L, "exampleBoard");
+    public BoardDAO exampleBoard() {
+        return new BoardDAO();
     }
 
     @RequestMapping(value = "boards", method = RequestMethod.GET)
-    public List<Board> list() {
+    public List<BoardDAO> list() {
         return boardRepository.findAll();
     }
 
     @RequestMapping(value = "boards", method = RequestMethod.POST)
-    public Board create(@RequestBody Board board) {
-        return boardRepository.saveAndFlush(board);
+    public BoardDAO create(@RequestBody BoardDAO boardDAO) {
+        return boardRepository.saveAndFlush(boardDAO);
     }
 
     @RequestMapping(value = "boards/{id}", method = RequestMethod.GET)
-    public Board get(@PathVariable Long id) {
+    public BoardDAO get(@PathVariable Long id) {
         return boardRepository.findOne(id);
     }
 
     @RequestMapping(value = "boards/{id}", method = RequestMethod.PUT)
-    public Board update(@PathVariable Long id, @RequestBody Board board) {
-        Board existingBoard = boardRepository.findOne(id);
-        BeanUtils.copyProperties(board, existingBoard);
+    public BoardDAO update(@PathVariable Long id, @RequestBody BoardDAO boardDAO) {
+        BoardDAO existingBoard = boardRepository.findOne(id);
+        BeanUtils.copyProperties(boardDAO, existingBoard);
         return boardRepository.saveAndFlush(existingBoard);
     }
 
     @RequestMapping(value = "boards/{id}", method = RequestMethod.DELETE)
-    public Board delete(@PathVariable Long id) {
-        Board existingBoard = boardRepository.findOne(id);
+    public BoardDAO delete(@PathVariable Long id) {
+        BoardDAO existingBoard = boardRepository.findOne(id);
         boardRepository.delete(existingBoard);
         return existingBoard;
     }

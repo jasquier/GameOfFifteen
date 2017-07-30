@@ -1,9 +1,11 @@
 package com.scoutItOut.gameOfFifteen.gameOfFifteen.model;
 
+import com.scoutItOut.gameOfFifteen.gameOfFifteen.dao.BoardDAO;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 /**
  * @author jasquier
@@ -15,27 +17,57 @@ public class BoardTest {
 
     @Before
     public void setup() {
-        board = new Board();
-    }
-
-    @Test
-    public void twoBoardsShouldBeEqual() {
-        Board board1 = new Board(1L, "test");
-        Board board2 = new Board(1L, "test");
-
-        assertEquals(board1, board2);
-    }
-
-    @Test
-    public void twoBoardsShouldNotBeEqualBecauseTheirIdsDoNotMatch() {
 
     }
 
     @Test
-    public void aBoardShouldNotEqualAString() {
-        Board board1 = new Board(1L, "test");
-        String string1 = "test";
+    public void noArgConstructorShouldPopulateADefaultBoard() {
+        Board actualBoard = new Board();
+        Integer[] expectedValues = {3, 2, 1, 0, 7, 6, 5, 4, 11, 10, 9, 8, 15, 14 ,13, 12};
+        Integer[] actualValues = populateActualValuesFromBoard(actualBoard);
+        assertThat(actualValues, is(expectedValues));
+    }
 
-        assertNotEquals(board1, string1);
+    @Test
+    public void constructorWithBoardDAOArgShouldPopulateWithValues() {
+        // create and fill BoardDAO
+        BoardDAO boardDAO = new BoardDAO();
+
+        boardDAO.setCell00Value(0);
+        boardDAO.setCell01Value(1);
+        boardDAO.setCell02Value(2);
+        boardDAO.setCell03Value(3);
+
+        boardDAO.setCell10Value(10);
+        boardDAO.setCell11Value(11);
+        boardDAO.setCell12Value(12);
+        boardDAO.setCell13Value(13);
+
+        boardDAO.setCell20Value(20);
+        boardDAO.setCell21Value(21);
+        boardDAO.setCell22Value(22);
+        boardDAO.setCell23Value(23);
+
+        boardDAO.setCell30Value(30);
+        boardDAO.setCell31Value(31);
+        boardDAO.setCell32Value(32);
+        boardDAO.setCell33Value(33);
+
+        // use BoardDAO to construct Board
+        Board actualBoard = new Board(boardDAO);
+
+        // check if Board is correctly populated with BoardDAO values
+        Integer[] expected = {0, 1, 2, 3, 10, 11, 12, 13, 20, 21, 22, 23, 30, 31, 32, 33};
+        Integer[] actual = populateActualValuesFromBoard(actualBoard);
+
+        assertThat(actual, is(expected));
+    }
+
+    private Integer[] populateActualValuesFromBoard(Board actualBoard) {
+        Integer[] actualValues = new Integer[16];
+        for ( int i = 0; i < 16; i++ ) {
+            actualValues[i] = actualBoard.getCells()[i/4][i%4].getValue();
+        }
+        return actualValues;
     }
 }
