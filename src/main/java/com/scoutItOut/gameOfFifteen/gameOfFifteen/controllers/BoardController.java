@@ -1,19 +1,25 @@
 package com.scoutItOut.gameOfFifteen.gameOfFifteen.controllers;
 
-import org.springframework.beans.BeanUtils;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.scoutItOut.gameOfFifteen.gameOfFifteen.model.Board;
 import com.scoutItOut.gameOfFifteen.gameOfFifteen.repository.BoardRepository;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "api/v1/")
-public class ShipwreckController {
+public class BoardController {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @RequestMapping(value = "board", method = RequestMethod.GET)
+    public Board exampleBoard() {
+        return new Board(1L, "exampleBoard");
+    }
 
     @RequestMapping(value = "boards", method = RequestMethod.GET)
     public List<Board> list() {

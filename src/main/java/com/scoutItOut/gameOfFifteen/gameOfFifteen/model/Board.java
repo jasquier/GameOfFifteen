@@ -1,7 +1,5 @@
 package com.scoutItOut.gameOfFifteen.gameOfFifteen.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +11,12 @@ public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+
     String name;
+
+    public Board() {
+
+    }
 
     public Board(Long id, String name) {
         this.id = id;
