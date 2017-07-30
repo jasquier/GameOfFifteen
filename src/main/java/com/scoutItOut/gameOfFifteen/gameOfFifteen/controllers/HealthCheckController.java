@@ -2,6 +2,10 @@ package com.scoutItOut.gameOfFifteen.gameOfFifteen.controllers;
 
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author jasquier
+ * @since 0.1
+ */
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api/v0.1/")

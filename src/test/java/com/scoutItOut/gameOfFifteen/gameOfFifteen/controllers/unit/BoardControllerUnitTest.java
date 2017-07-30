@@ -15,6 +15,10 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * @author jasquier
+ * @since 0.1
+ */
 public class BoardControllerUnitTest {
 
     private List<Board> dummyBoards;
@@ -59,6 +63,9 @@ public class BoardControllerUnitTest {
 
         // exercise
         List<Board> actual = boardController.list();
+
+        // ensure the mocked method was called
+        verify(boardRepository).findAll();
 
         assertEquals(expected, actual);
     }

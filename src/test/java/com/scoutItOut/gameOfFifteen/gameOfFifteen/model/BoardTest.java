@@ -5,6 +5,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author jasquier
+ * @since 0.1
+ */
 public class BoardTest {
 
     private Board board;
