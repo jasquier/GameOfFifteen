@@ -6,22 +6,21 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class HealthCheckController {
 
-    private static final String template = "Hello, %s!";
-
     @RequestMapping(value = "/healthCheck", method = RequestMethod.GET)
     public HealthResponse getHealthCheck(@RequestParam(value = "content", defaultValue = "World") String content) {
-        return new HealthResponse(String.format(template, content));
+        return new HealthResponse(content);
     }
 
     class HealthResponse {
         private String content;
+        private static final String template = "Hello, %s!";
 
         HealthResponse(String content) {
             this.content = content;
         }
 
         public String getContent() {
-            return content;
+            return String.format(template, content);
         }
     }
 }
