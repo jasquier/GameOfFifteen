@@ -32,7 +32,7 @@ public class HealthCheckControllerTest {
     @Test
     public void paramHealthCheckShouldReturnTailoredMessage() throws Exception {
         this.mockMvc.perform(get("/healthCheck")
-                .param("contebt", "Unit Testing"))
+                .param("content", "Unit Testing"))
                 .andDo(print()).
                 andExpect(status().isOk())
                 .andExpect(jsonPath("$.content").value("Hello, Unit Testing!"));
