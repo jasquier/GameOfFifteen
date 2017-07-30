@@ -1,3 +1,3 @@
-# GameOfFifteen
+#Game of Fifteen
 
-An implementation of the handheld game of fifteen.
+An implementation of the handheld game of fifteen...
