@@ -6,6 +6,8 @@ import com.scoutItOut.gameOfFifteen.gameOfFifteen.dao.BoardDAO;
  * @author jasquier
  * @since 0.1
  *
+ * TODO we need to be able to convert a Board to a BoardDAO
+ *
  * We are currently treating i as y and j as x in a Cartesian plane.
  *         /\
  * i=3,j=0 |
@@ -47,6 +49,34 @@ public class Board {
         }
     }
 
+    public BoardDAO convertBoardToDAO() {
+        BoardDAO boardDAO = new BoardDAO();
+
+        boardDAO.setId(1L);
+
+        boardDAO.setCell00Value(cells[0][0].getValue());
+        boardDAO.setCell01Value(cells[0][1].getValue());
+        boardDAO.setCell02Value(cells[0][2].getValue());
+        boardDAO.setCell03Value(cells[0][3].getValue());
+
+        boardDAO.setCell10Value(cells[1][0].getValue());
+        boardDAO.setCell11Value(cells[1][1].getValue());
+        boardDAO.setCell12Value(cells[1][2].getValue());
+        boardDAO.setCell13Value(cells[1][3].getValue());
+
+        boardDAO.setCell20Value(cells[2][0].getValue());
+        boardDAO.setCell21Value(cells[2][1].getValue());
+        boardDAO.setCell22Value(cells[2][2].getValue());
+        boardDAO.setCell23Value(cells[2][3].getValue());
+
+        boardDAO.setCell30Value(cells[3][0].getValue());
+        boardDAO.setCell31Value(cells[3][1].getValue());
+        boardDAO.setCell32Value(cells[3][2].getValue());
+        boardDAO.setCell33Value(cells[3][3].getValue());
+
+        return boardDAO;
+    }
+
     // note we are reserving the long 1L for the default boards' id
     // populate the board with default values
     private Cell[][] populateBoardFrom() {
@@ -64,7 +94,6 @@ public class Board {
         this.id = boardDAO.getId();
 
         Cell[][] temp = new Cell[4][4];
-
         temp[0][0] = new Cell(boardDAO.getCell00Value());
         temp[0][1] = new Cell(boardDAO.getCell01Value());
         temp[0][2] = new Cell(boardDAO.getCell02Value());
@@ -88,6 +117,7 @@ public class Board {
         return temp;
     }
 
+    // TODO complete equals method to compare cells
     private boolean equals(Board other) {
         boolean flag = false;
         if ( thisBoardsIdMatches(other) ) {

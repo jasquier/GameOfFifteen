@@ -27,7 +27,7 @@ public class BoardController {
 
     @RequestMapping(value = "board", method = RequestMethod.GET)
     public BoardDAO exampleBoard() {
-        return new BoardDAO();
+        return new Board().convertBoardToDAO();
     }
 
     @RequestMapping(value = "boards", method = RequestMethod.GET)

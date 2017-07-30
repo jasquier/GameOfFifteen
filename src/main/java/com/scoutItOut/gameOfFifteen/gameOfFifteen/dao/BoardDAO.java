@@ -1,9 +1,6 @@
 package com.scoutItOut.gameOfFifteen.gameOfFifteen.dao;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author jasquier
@@ -20,17 +17,14 @@ public class BoardDAO {
     private int cell01Value;
     private int cell02Value;
     private int cell03Value;
-
     private int cell10Value;
     private int cell11Value;
     private int cell12Value;
     private int cell13Value;
-
     private int cell20Value;
     private int cell21Value;
     private int cell22Value;
     private int cell23Value;
-
     private int cell30Value;
     private int cell31Value;
     private int cell32Value;
