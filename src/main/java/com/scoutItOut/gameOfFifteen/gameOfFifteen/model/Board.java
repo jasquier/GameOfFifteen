@@ -1,14 +1,14 @@
 package com.scoutItOut.gameOfFifteen.gameOfFifteen.model;
 
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 
-@Configuration
 public class Board {
 
+    @Autowired
     private Cell[][] cells;
 
-    public Board() {
-
+    public Board(Cell[][] cells) {
+        this.cells = cells;
     }
 
 
