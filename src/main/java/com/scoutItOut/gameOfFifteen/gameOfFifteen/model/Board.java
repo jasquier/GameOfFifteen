@@ -6,8 +6,6 @@ import com.scoutItOut.gameOfFifteen.gameOfFifteen.dao.BoardDAO;
  * @author jasquier
  * @since 0.1
  *
- * TODO we need to be able to convert a Board to a BoardDAO
- *
  * We are currently treating i as y and j as x in a Cartesian plane.
  *         /\
  * i=3,j=0 |
@@ -49,6 +47,7 @@ public class Board {
         }
     }
 
+    // TODO needs testing convertBoardToDAO()
     public BoardDAO convertBoardToDAO() {
         BoardDAO boardDAO = new BoardDAO();
 

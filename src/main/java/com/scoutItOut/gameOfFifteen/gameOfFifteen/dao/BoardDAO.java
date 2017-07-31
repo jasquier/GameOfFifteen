@@ -5,6 +5,9 @@ import javax.persistence.*;
 /**
  * @author jasquier
  * @since 0.1
+ *
+ * The entire conversion from Board to BoardDAO is needed so we can store simple ints in the
+ *  DB instead of the 2d array we are using to represent the board internally
  */
 @Entity
 public class BoardDAO {

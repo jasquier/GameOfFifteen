@@ -2,7 +2,6 @@ package com.scoutItOut.gameOfFifteen.gameOfFifteen.controllers;
 
 import com.scoutItOut.gameOfFifteen.gameOfFifteen.dao.BoardDAO;
 import com.scoutItOut.gameOfFifteen.gameOfFifteen.model.Board;
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.model.Cell;
 import com.scoutItOut.gameOfFifteen.gameOfFifteen.repository.BoardRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import java.util.List;
  * @since 0.1
  *
  * Our app is not a crud application so the front end wont be able to issue commands through the middle like this
- * Note that we are using BoardDAO's to interact with the backend and should probably not be using them here.
+ * Note that we are using BoardDAO's to interact with the backend and should probably not be using them to talk to the front.
  */
 @CrossOrigin
 @RestController
