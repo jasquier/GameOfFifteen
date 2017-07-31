@@ -3,6 +3,9 @@ package com.scoutItOut.gameOfFifteen.gameOfFifteen.model;
 /**
  * @author jasquier
  * @since 0.1
+ *
+ * TODO test and implement equals method
+ *
  */
 public class Cell {
 

@@ -6,6 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author jasquier
  * @since 0.1
+ *
+ * TODO add migration scripts to populate a starter db
+ * TODO test board to boardDAO conversion method in board class
+ *
  */
 @SpringBootApplication
 public class GameOfFifteenApplication {
