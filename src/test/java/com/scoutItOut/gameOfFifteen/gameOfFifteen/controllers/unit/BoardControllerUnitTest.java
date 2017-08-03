@@ -2,7 +2,9 @@
 package com.scoutItOut.gameOfFifteen.gameOfFifteen.controllers.unit;
 
 import com.scoutItOut.gameOfFifteen.gameOfFifteen.controllers.BoardController;
+import com.scoutItOut.gameOfFifteen.gameOfFifteen.dao.BoardDAO;
 import com.scoutItOut.gameOfFifteen.gameOfFifteen.model.Board;
+import com.scoutItOut.gameOfFifteen.gameOfFifteen.model.Cell;
 import com.scoutItOut.gameOfFifteen.gameOfFifteen.repository.BoardRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,6 +15,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -23,7 +26,7 @@ import static org.mockito.Mockito.*;
  */
 public class BoardControllerUnitTest {
 
-    private List<Board> dummyBoards;
+    private List<BoardDAO> dummyBoards;
 
     @Mock
     private BoardRepository boardRepository;
@@ -34,43 +37,58 @@ public class BoardControllerUnitTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-
-        // setup dummy database
-       // dummyBoards = new ArrayList<>();
-       // dummyBoards.add(new Board(1L,));
+        dummyBoards = initializeListOfBoardDAOs();
     }
 
     @Test
     public void exampleBoardTest() {
+        // generate the default board
         Board expected = new Board();
 
         // no need for mocks here
         Board actual = new Board(boardController.exampleBoard());
 
-        assertEquals(expected, actual);
+        //assertEquals(expected, actual);
+        assertThat(actual, is(expected));
     }
 
-    /*
+
     @Test
     public void listBoardsTest() {
         // build expected
-        List<Board> expected = new ArrayList<>();
-        Board expected1 = new Board(1L, "board1");
-        Board expected2 = new Board(2L, "board2");
-        expected.add(expected1);
-        expected.add(expected2);
+        List<BoardDAO> expected = initializeListOfBoardDAOs();
 
         // mock the dependencies in the controller
         when(boardRepository.findAll()).thenReturn(dummyBoards);
 
         // exercise
-        List<Board> actual = boardController.list();
+        List<BoardDAO> actual = boardController.list();
 
         // ensure the mocked method was called
         verify(boardRepository).findAll();
 
-        assertEquals(expected, actual);
+        //assertEquals(expected, actualDAOs);
+        // TODO rework the assert once equals() methods are implemented
+        assertThat(actual.size(), is(expected.size()));
+        for ( int i = 0; i < actual.size(); i++ ) {
+            assertThat(actual.get(i), is(expected.get(i)));
+        }
     }
-    */
+
+    private List<BoardDAO> initializeListOfBoardDAOs() {
+        BoardDAO defaultBoardDAO = new Board().convertBoardToDAO();
+
+        Board slightlyModifiedDefaultBoard = new Board();
+        slightlyModifiedDefaultBoard.setId(2L);
+        Cell[][] cells = slightlyModifiedDefaultBoard.getCells();
+        cells[0][0] = new Cell(1337);
+        BoardDAO slightModifiedDefaultBoardDAO = slightlyModifiedDefaultBoard.convertBoardToDAO();
+
+        List<BoardDAO> boardDAOs = new ArrayList<>();
+        boardDAOs.add(defaultBoardDAO);
+        boardDAOs.add(slightModifiedDefaultBoardDAO);
+        return boardDAOs;
+    }
+
 }
 

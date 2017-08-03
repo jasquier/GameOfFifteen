@@ -34,6 +34,10 @@ public class Board {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Cell[][] getCells() {
         return cells;
     }

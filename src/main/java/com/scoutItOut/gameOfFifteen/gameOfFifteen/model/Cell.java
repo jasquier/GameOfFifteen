@@ -4,8 +4,7 @@ package com.scoutItOut.gameOfFifteen.gameOfFifteen.model;
  * @author jasquier
  * @since 0.1
  *
- * TODO test and implement equals method
- *
+ * Class to represent a cell in the Game of Fifteen.
  */
 public class Cell {
 
@@ -15,16 +14,26 @@ public class Cell {
         this.value = value;
     }
 
-    public int getValue() {
+    int getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    // TODO implement upper and lower limits for value in this setter (1 - 15)
+    void setValue(int value) {
         this.value = value;
     }
 
     @Override
     public String toString() {
         return Integer.toString(value);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other instanceof Cell && this.equals((Cell) other);
+    }
+
+    private boolean equals(Cell other) {
+        return this.getValue() == other.getValue();
     }
 }
