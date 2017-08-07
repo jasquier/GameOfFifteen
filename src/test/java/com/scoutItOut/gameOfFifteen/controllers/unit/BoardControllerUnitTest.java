@@ -1,11 +1,11 @@
 
-package com.scoutItOut.gameOfFifteen.gameOfFifteen.controllers.unit;
+package com.scoutItOut.gameOfFifteen.controllers.unit;
 
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.controllers.BoardController;
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.dao.BoardDAO;
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.model.Board;
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.model.Cell;
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.repository.BoardRepository;
+import com.scoutItOut.gameOfFifteen.dao.BoardDAO;
+import com.scoutItOut.gameOfFifteen.controllers.BoardController;
+import com.scoutItOut.gameOfFifteen.model.Board;
+import com.scoutItOut.gameOfFifteen.model.Cell;
+import com.scoutItOut.gameOfFifteen.repository.BoardRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

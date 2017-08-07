@@ -1,4 +1,4 @@
-package com.scoutItOut.gameOfFifteen.gameOfFifteen.dao;
+package com.scoutItOut.gameOfFifteen.dao;
 
 import javax.persistence.*;
 

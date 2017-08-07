@@ -1,4 +1,4 @@
-package com.scoutItOut.gameOfFifteen.gameOfFifteen;
+package com.scoutItOut.gameOfFifteen;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

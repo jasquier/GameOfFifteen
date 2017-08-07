@@ -1,4 +1,4 @@
-package com.scoutItOut.gameOfFifteen.gameOfFifteen.controllers;
+package com.scoutItOut.gameOfFifteen.controllers;
 
 /**
  * @author jasquier

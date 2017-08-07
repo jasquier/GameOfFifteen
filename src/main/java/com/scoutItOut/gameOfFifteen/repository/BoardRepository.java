@@ -1,6 +1,6 @@
-package com.scoutItOut.gameOfFifteen.gameOfFifteen.repository;
+package com.scoutItOut.gameOfFifteen.repository;
 
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.dao.BoardDAO;
+import com.scoutItOut.gameOfFifteen.dao.BoardDAO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

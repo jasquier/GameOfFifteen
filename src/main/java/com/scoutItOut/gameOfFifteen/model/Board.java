@@ -1,6 +1,6 @@
-package com.scoutItOut.gameOfFifteen.gameOfFifteen.model;
+package com.scoutItOut.gameOfFifteen.model;
 
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.dao.BoardDAO;
+import com.scoutItOut.gameOfFifteen.dao.BoardDAO;
 
 /**
  * @author jasquier
@@ -55,7 +55,7 @@ public class Board {
     public BoardDAO convertBoardToDAO() {
         BoardDAO boardDAO = new BoardDAO();
 
-        boardDAO.setId(1L);
+        boardDAO.setId(this.id);
 
         boardDAO.setCell00Value(cells[0][0].getValue());
         boardDAO.setCell01Value(cells[0][1].getValue());

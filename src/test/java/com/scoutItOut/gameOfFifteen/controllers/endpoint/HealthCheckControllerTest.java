@@ -1,4 +1,4 @@
-package com.scoutItOut.gameOfFifteen.gameOfFifteen.controllers.endpoint;
+package com.scoutItOut.gameOfFifteen.controllers.endpoint;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,16 +20,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class BoardControllerTest {
+public class HealthCheckControllerTest {
 
-    @Autowired private MockMvc mockMvc;
-    private final String uriTemplate = "/api/v0.1/%s";
+    @Autowired
+    private MockMvc mockMvc;
 
     @Test
-    public void noParamGetShouldReturnDummyData() throws Exception {
-        this.mockMvc.perform(get(String.format(uriTemplate, "boards")))
+    public void noParamHealthCheckShouldReturnDefaultMessage() throws Exception {
+        this.mockMvc.perform(get("/healthCheck"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("[]"));
+                .andExpect(jsonPath("$.content").value("Hello, World!"));
+    }
+
+    @Test
+    public void paramHealthCheckShouldReturnTailoredMessage() throws Exception {
+        this.mockMvc.perform(get("/healthCheck")
+                .param("content", "Unit Testing"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content").value("Hello, Unit Testing!"));
     }
 }

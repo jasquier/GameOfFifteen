@@ -1,6 +1,6 @@
-package com.scoutItOut.gameOfFifteen.gameOfFifteen.model;
+package com.scoutItOut.gameOfFifteen.model;
 
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.dao.BoardDAO;
+import com.scoutItOut.gameOfFifteen.dao.BoardDAO;
 import org.junit.Before;
 import org.junit.Test;
 

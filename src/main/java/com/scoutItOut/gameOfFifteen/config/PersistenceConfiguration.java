@@ -1,4 +1,4 @@
-package com.scoutItOut.gameOfFifteen.gameOfFifteen.config;
+package com.scoutItOut.gameOfFifteen.config;
 
 import org.springframework.boot.autoconfigure.flyway.FlywayDataSource;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;

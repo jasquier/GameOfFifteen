@@ -1,4 +1,4 @@
-package com.scoutItOut.gameOfFifteen.gameOfFifteen.model;
+package com.scoutItOut.gameOfFifteen.model;
 
 /**
  * @author jasquier

@@ -1,8 +1,8 @@
-package com.scoutItOut.gameOfFifteen.gameOfFifteen.controllers;
+package com.scoutItOut.gameOfFifteen.controllers;
 
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.dao.BoardDAO;
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.model.Board;
-import com.scoutItOut.gameOfFifteen.gameOfFifteen.repository.BoardRepository;
+import com.scoutItOut.gameOfFifteen.dao.BoardDAO;
+import com.scoutItOut.gameOfFifteen.model.Board;
+import com.scoutItOut.gameOfFifteen.repository.BoardRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
