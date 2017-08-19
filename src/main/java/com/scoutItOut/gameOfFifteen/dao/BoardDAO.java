@@ -1,5 +1,7 @@
 package com.scoutItOut.gameOfFifteen.dao;
 
+import com.scoutItOut.gameOfFifteen.model.Board;
+
 import javax.persistence.*;
 
 /**
@@ -8,6 +10,10 @@ import javax.persistence.*;
  *
  * The entire conversion from Board to BoardDAO is needed so we can store simple ints in the
  *  DB instead of the 2d array we are using to represent the board internally
+ *
+ *  Need to implement DAO equals
+ *
+ *  @Column tags not needed on the int's because their names are the same here and in the DB
  */
 @Entity
 public class BoardDAO {
@@ -32,6 +38,73 @@ public class BoardDAO {
     private int cell31Value;
     private int cell32Value;
     private int cell33Value;
+
+    public BoardDAO() {
+
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other instanceof BoardDAO && this.equals((BoardDAO) other);
+    }
+
+    // TODO this method needs shortened or refactored
+    private boolean equals(BoardDAO other) {
+        boolean flag = true;
+        if ( this.getCell00Value() != other.getCell00Value() ) {
+            flag = false;
+        }
+        if ( this.getCell01Value() != other.getCell01Value() ) {
+            flag = false;
+        }
+        if ( this.getCell02Value() != other.getCell02Value() ) {
+            flag = false;
+        }
+        if ( this.getCell03Value() != other.getCell03Value() ) {
+            flag = false;
+        }
+
+        if ( this.getCell10Value() != other.getCell10Value() ) {
+            flag = false;
+        }
+        if ( this.getCell11Value() != other.getCell11Value() ) {
+            flag = false;
+        }
+        if (this.getCell12Value() != other.getCell12Value() ) {
+            flag = false;
+        }
+        if ( this.getCell13Value() != other.getCell13Value() ) {
+            flag = false;
+        }
+
+        if ( this.getCell20Value() != other.getCell20Value() ) {
+            flag = false;
+        }
+        if ( this.getCell21Value() != other.getCell21Value() ) {
+            flag = false;
+        }
+        if ( this.getCell22Value() != other.getCell22Value() ) {
+            flag = false;
+        }
+        if ( this.getCell23Value() != other.getCell23Value() ) {
+            flag = false;
+        }
+
+        if ( this.getCell30Value() != other.getCell30Value() ) {
+            flag = false;
+        }
+        if ( this.getCell31Value() != other.getCell31Value() ) {
+            flag = false;
+        }
+        if ( this.getCell32Value() != other.getCell32Value() ) {
+            flag = false;
+        }
+        if ( this.getCell33Value() != other.getCell33Value() ) {
+            flag = false;
+        }
+
+        return flag;
+    }
 
     public Long getId() {
         return id;

@@ -16,6 +16,9 @@ import com.scoutItOut.gameOfFifteen.dao.BoardDAO;
  *         |
  *         -------------------------------->
  *         i=0,j=0                 i=0,j=3
+ *
+ *
+ *         Note that the cells [][] array can probably be manipulated once acquired using get
  */
 public class Board {
 
@@ -23,11 +26,11 @@ public class Board {
     private Cell[][] cells;
 
     public Board() {
-        cells = populateBoardFrom();
+        cells = populateBoardCellsFrom();
     }
 
     public Board(BoardDAO boardDAO) {
-        cells = populateBoardFrom(boardDAO);
+        cells = populateBoardCellsFrom(boardDAO);
     }
 
     public Long getId() {
@@ -44,14 +47,9 @@ public class Board {
 
     @Override
     public boolean equals(Object other) {
-        if ( other instanceof Board ) {
-            return this.equals((Board)other);
-        } else {
-            return false;
-        }
+        return other instanceof Board && this.equals((Board) other);
     }
 
-    // TODO needs testing convertBoardToDAO()
     public BoardDAO convertBoardToDAO() {
         BoardDAO boardDAO = new BoardDAO();
 
@@ -82,8 +80,8 @@ public class Board {
 
     // note we are reserving the long 1L for the default boards' id
     // populate the board with default values
-    private Cell[][] populateBoardFrom() {
-        this.id = 1l;
+    private Cell[][] populateBoardCellsFrom() {
+        this.id = 1L;
         Cell[] row3 = {new Cell(15), new Cell(14), new Cell(13), new Cell(12)};
         Cell[] row2 = {new Cell(11), new Cell(10), new Cell(9), new Cell(8)};
         Cell[] row1 = {new Cell(7), new Cell(6), new Cell(5), new Cell(4)};
@@ -93,7 +91,7 @@ public class Board {
     }
 
     // populate the board with values from the given DAO
-    private Cell[][] populateBoardFrom(BoardDAO boardDAO) {
+    private Cell[][] populateBoardCellsFrom(BoardDAO boardDAO) {
         this.id = boardDAO.getId();
 
         Cell[][] temp = new Cell[4][4];
@@ -120,11 +118,45 @@ public class Board {
         return temp;
     }
 
-    // TODO complete equals method to compare cells
     private boolean equals(Board other) {
         boolean flag = false;
         if ( thisBoardsIdMatches(other) ) {
-            flag = true;
+            if( thisBoardsCellsMatch(other) ) {
+                flag = true;
+            }
+        }
+        return flag;
+    }
+
+    private boolean thisBoardsCellsMatch(Board other) {
+        boolean flag = true;
+        Cell[][] othersCells = other.getCells();
+
+        if( thisBoardsCellArrayIsTheSameSizeAs(othersCells) ) {
+            // should pull this junk out
+            for ( int i = 0; i < this.getCells().length; i++ ) {
+                for ( int j = 0; j < this.getCells()[i].length; j++ ) {
+                    // we're switching the flag if we hit two cells that don't match
+                    if ( !this.getCells()[i][j].equals(othersCells[i][j]) ) {
+                        flag = false;
+                        // should log something here
+                    }
+                }
+            }
+        }
+        return flag;
+    }
+
+    private boolean thisBoardsCellArrayIsTheSameSizeAs(Cell[][] othersCells) {
+        boolean flag = false;
+        // check size of outer array
+        if ( this.getCells().length == othersCells.length ) {
+            // check the size of each inner array
+            for ( int i = 0; i < othersCells.length; i++ ) {
+                if ( this.getCells()[i].length == othersCells[i].length ) {
+                    flag = true;
+                }
+            }
         }
         return flag;
     }

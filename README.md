@@ -7,3 +7,5 @@ An implementation of the handheld game of fifteen...
 3. Check if new board state represents a valid transition from previous board state.
 4. If valid write board state to db and get new id, go to step 1.
 5. If invalid revert to step 1.
+
+We need to write a migration script that populates a database with some starter boards.

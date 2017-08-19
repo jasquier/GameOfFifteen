@@ -15,6 +15,8 @@ import java.util.List;
  *
  * Our app is not a crud application so the front end wont be able to issue commands through the middle like this
  * Note that we are using BoardDAO's to interact with the backend and should probably not be using them to talk to the front.
+ *
+ * Should we use constructor based dependency injection??
  */
 @CrossOrigin
 @RestController
